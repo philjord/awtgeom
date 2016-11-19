@@ -47,14 +47,14 @@ package javaawt.geom;
  * Be aware that manually closing an outline as opposed to using a
  * "CLOSE" segment to close the path might result in different line
  * style decorations being used at the end points of the subpath.
- * For example, the {@link java.awt.BasicStroke BasicStroke} object
+ * For example, the {@link javaawt.BasicStroke BasicStroke} object
  * uses a line "JOIN" decoration to connect the first and last points
  * if a "CLOSE" segment is encountered, whereas simply ending the path
  * on the same coordinate as the beginning coordinate results in line
  * "CAP" decorations being used at the ends.
  *
  * @see java.awt.Shape
- * @see java.awt.BasicStroke
+ * @see javaawt.BasicStroke
  *
  * @author Jim Graham
  */

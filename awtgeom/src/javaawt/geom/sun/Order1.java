@@ -194,9 +194,8 @@ import javaawt.geom.Rectangle2D;
     }
 
     public void enlarge(Rectangle2D r) {
-    	throw new UnsupportedOperationException();
-        //r.add(x0, y0);
-        //r.add(x1, y1);
+        r.add(x0, y0);
+        r.add(x1, y1);
     }
 
     public Curve getSubCurve(double ystart, double yend, int dir) {
