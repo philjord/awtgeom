@@ -132,9 +132,17 @@ public abstract class RenderingEngine {
                         try {
                             Class<?> cls = Class.forName(piscesREClass);
                             return (RenderingEngine) cls.newInstance();
-                        } catch (ReflectiveOperationException ignored) {
+                        } catch (ClassNotFoundException ignored) {
                             // not found
                         }
+						catch (InstantiationException e)
+						{
+												e.printStackTrace();
+						}
+						catch (IllegalAccessException e)
+						{
+							e.printStackTrace();
+						}
                     }
 
                     ServiceLoader<RenderingEngine> reLoader =
