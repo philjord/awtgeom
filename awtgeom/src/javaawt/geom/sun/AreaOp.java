@@ -26,7 +26,7 @@
 package javaawt.geom.sun;
 
 import java.util.Vector;
-import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.Comparator;
 import java.util.Arrays;
 
@@ -198,10 +198,10 @@ public abstract class AreaOp
 
 	private static void addEdges(Vector edges, Vector curves, int curvetag)
 	{
-		Enumeration enum_ = curves.elements();
-		while (enum_.hasMoreElements())
+		Iterator enum_ = curves.iterator();
+		while (enum_.hasNext())
 		{
-			Curve c = (Curve) enum_.nextElement();
+			Curve c = (Curve) enum_.next();
 			if (c.getOrder() > 0)
 			{
 				edges.add(new Edge(c, curvetag));
@@ -468,10 +468,10 @@ public abstract class AreaOp
 		}
 		finalizeSubCurves(subcurves, chains);
 		Vector ret = new Vector();
-		Enumeration enum_ = subcurves.elements();
-		while (enum_.hasMoreElements())
+		Iterator enum_ = subcurves.iterator();
+		while (enum_.hasNext())
 		{
-			CurveLink link = (CurveLink) enum_.nextElement();
+			CurveLink link = (CurveLink) enum_.next();
 			ret.add(link.getMoveto());
 			CurveLink nextlink = link;
 			while ((nextlink = nextlink.getNext()) != null)

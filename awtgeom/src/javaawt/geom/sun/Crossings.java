@@ -29,7 +29,7 @@ package javaawt.geom.sun;
 
 import javaawt.geom.PathIterator;
 import java.util.Vector;
-import java.util.Enumeration;
+import java.util.Iterator;
 
 public abstract class Crossings {
     public static final boolean debug = false;
@@ -84,9 +84,9 @@ public abstract class Crossings {
                                           double xhi, double yhi)
     {
         Crossings cross = new EvenOdd(xlo, ylo, xhi, yhi);
-        Enumeration enum_ = curves.elements();
-        while (enum_.hasMoreElements()) {
-            Curve c = (Curve) enum_.nextElement();
+        Iterator enum_ = curves.iterator();
+        while (enum_.hasNext()) {
+            Curve c = (Curve) enum_.next();
             if (c.accumulateCrossings(cross)) {
                 return null;
             }
@@ -260,9 +260,9 @@ public abstract class Crossings {
             return false;
         }
         Curve.insertQuad(tmp, x0, y0, coords);
-        Enumeration enum_ = tmp.elements();
-        while (enum_.hasMoreElements()) {
-            Curve c = (Curve) enum_.nextElement();
+        Iterator enum_ = tmp.iterator();
+        while (enum_.hasNext()) {
+            Curve c = (Curve) enum_.next();
             if (c.accumulateCrossings(this)) {
                 return true;
             }
@@ -298,9 +298,9 @@ public abstract class Crossings {
             return false;
         }
         Curve.insertCubic(tmp, x0, y0, coords);
-        Enumeration enum_ = tmp.elements();
-        while (enum_.hasMoreElements()) {
-            Curve c = (Curve) enum_.nextElement();
+        Iterator enum_ = tmp.iterator();
+        while (enum_.hasNext()) {
+            Curve c = (Curve) enum_.next();
             if (c.accumulateCrossings(this)) {
                 return true;
             }

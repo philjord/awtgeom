@@ -1,6 +1,6 @@
 package javaawt.geom;
 
-import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Vector;
 
@@ -356,10 +356,10 @@ public class Area implements Shape, Cloneable
 	 */
 	public boolean isPolygonal()
 	{
-		Enumeration enum_ = curves.elements();
-		while (enum_.hasMoreElements())
+		Iterator enum_ = curves.iterator();
+		while (enum_.hasNext())
 		{
-			if (((Curve) enum_.nextElement()).getOrder() > 1)
+			if (((Curve) enum_.next()).getOrder() > 1)
 			{
 				return false;
 			}
@@ -420,11 +420,11 @@ public class Area implements Shape, Cloneable
 		{
 			return true;
 		}
-		Enumeration enum_ = curves.elements();
-		enum_.nextElement(); // First Order0 "moveto"
-		while (enum_.hasMoreElements())
+		Iterator enum_ = curves.iterator();
+		enum_.next(); // First Order0 "moveto"
+		while (enum_.hasNext())
 		{
-			if (((Curve) enum_.nextElement()).getOrder() == 0)
+			if (((Curve) enum_.next()).getOrder() == 0)
 			{
 				return false;
 			}
@@ -584,11 +584,11 @@ public class Area implements Shape, Cloneable
 		{
 			return false;
 		}
-		Enumeration enum_ = curves.elements();
+		Iterator enum_ = curves.iterator();
 		int crossings = 0;
-		while (enum_.hasMoreElements())
+		while (enum_.hasNext())
 		{
-			Curve c = (Curve) enum_.nextElement();
+			Curve c = (Curve) enum_.next();
 			crossings += c.crossingsFor(x, y);
 		}
 		return ((crossings & 1) == 1);
