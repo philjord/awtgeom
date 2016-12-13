@@ -129,7 +129,7 @@ public class Area implements Shape, Cloneable
 		//             0-2 horizontal splitting parameters
 		//             OR
 		//             3 parametric equation derivative coefficients
-		float coords[] = new float[23];
+		double coords[] = new double[23];
 		double movx = 0, movy = 0;
 		double curx = 0, cury = 0;
 		double newx, newy;
@@ -151,21 +151,21 @@ public class Area implements Shape, Cloneable
 				cury = newy;
 				break;
 			case PathIterator.SEG_QUADTO:
-				throw new UnsupportedOperationException();
-			//	newx = coords[2];
-			//	newy = coords[3];
-				//Curve.insertQuad(curves, curx, cury, coords);
-			//	curx = newx;
-			//	cury = newy;
-			//	break;
+				//throw new UnsupportedOperationException();
+				newx = coords[2];
+				newy = coords[3];
+				Curve.insertQuad(curves, curx, cury, coords);
+				curx = newx;
+				cury = newy;
+				break;
 			case PathIterator.SEG_CUBICTO:
-				throw new UnsupportedOperationException();
-			//	newx = coords[4];
-			//	newy = coords[5];
-				//Curve.insertCubic(curves, curx, cury, coords);
-			//	curx = newx;
-			//	cury = newy;
-			//	break;
+				//throw new UnsupportedOperationException();
+				newx = coords[4];
+				newy = coords[5];
+				Curve.insertCubic(curves, curx, cury, coords);
+				curx = newx;
+				cury = newy;
+				break;
 			case PathIterator.SEG_CLOSE:
 				Curve.insertLine(curves, curx, cury, movx, movy);
 				curx = movx;
