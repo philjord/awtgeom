@@ -3824,10 +3824,10 @@ public class AffineTransform implements Cloneable, java.io.Serializable {
      * @since 1.2
      */
     public Shape createTransformedShape(Shape pSrc) {
-       // if (pSrc == null) {
+        if (pSrc == null) {
             return null;
-       // }
-       // return new Path2D.Double(pSrc, this);
+        }
+        return new Path2D.Double(pSrc, this);
     }
 
     // Round values to sane precision for printing
